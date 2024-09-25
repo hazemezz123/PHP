@@ -49,8 +49,6 @@ echo gettype(10.5 + 10.5) . "<br>"; // 21 double
 echo (int) (11.1 + 22.2) . "<br>"; // 33 integer 
 echo gettype((int) (11.1 + 22.2)) . "<br>"; // integer
 
-// Boolean And Converting To Boolean
 
-var_dump((bool) "");
 
 
