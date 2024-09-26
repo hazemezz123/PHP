@@ -56,7 +56,7 @@ print_r([
 ]);
 echo "</pre>";
 
-// Start with Variables 
+// Start with Variables & variables of variables
 
 $username = "Osama";
 $Username = "Ahmed";
@@ -65,3 +65,18 @@ echo $username . "<br>";
 echo $Username . "<br>";
 echo "hello world from the user :  $Username" . "<br>";
 echo 'hello world from the user :  $Username' . "<br>";
+
+echo "<hr>";
+
+$a = "Osama";
+$$a = "El_zero";
+$ $$a = "school";
+
+echo $a . "<br>";
+echo "<b>$Osama</b>" . "<br>";
+echo $$a . "<br>";
+echo "<b>$El_zero</b>" . "<br>";
+echo $ $$a . "<br>";
+echo "hello $a" . "<br>";
+echo "hello". $$a . "<br>";
+echo "hello". $$$a . "<br>";
