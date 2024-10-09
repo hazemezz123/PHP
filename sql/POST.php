@@ -4,109 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Contact Form with POST Method</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
         }
 
-        .form-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            width: 100%;
-        }
-
-        .form-container h1 {
+        h1 {
+            font-size: 2em;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 24px;
             color: #333;
         }
 
-        .form-container label {
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
             display: block;
-            font-size: 14px;
-            color: #333;
             margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
         }
 
-        .form-container input,
-        .form-container textarea {
+        input[type="text"],
+        input[type="email"],
+        textarea {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1em;
+            background-color: #f9f9f9;
         }
 
-        .form-container input[type="submit"] {
-            background-color: #28a745;
+        input[type="submit"] {
+            background-color: #007bff;
             color: white;
             border: none;
-            cursor: pointer;
-            font-size: 16px;
-            padding: 12px;
+            padding: 12px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+            font-size: 1em;
         }
 
-        .form-container input[type="submit"]:hover {
-            background-color: #218838;
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="form-container">
-        <h1>Contact Us</h1>
-        <form action="process_get.php" method="get">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    <h1>Contact Form</h1>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
-
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+    <form method="POST">
+        <div>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
 
-// Check if form data has been submitted
-if (isset($_GET['name'], $_GET['email'], $_GET['message'])) {
-    $name = htmlspecialchars($_GET['name']);  // Sanitize the input
-    $email = htmlspecialchars($_GET['email']);
-    $message = htmlspecialchars($_GET['message']);
-
-    // Basic validation (you can add more as needed)
-    if (!empty($name) && !empty($email) && !empty($message)) {
-        // Display the submitted data
-        echo "<h2>Form Submission Details:</h2>";
-        echo "<strong>Name:</strong> " . $name . "<br>";
-        echo "<strong>Email:</strong> " . $email . "<br>";
-        echo "<strong>Message:</strong> " . nl2br($message) . "<br>";  // Preserve line breaks in the message
-    } else {
-        echo "<p style='color:red;'>All fields are required. Please fill out the form completely.</p>";
-    }
-} else {
-    echo "<p style='color:red;'>Form data not submitted correctly.</p>";
+    // Output the submitted data
+    echo "Name: " . htmlspecialchars($name) . "<br>";
+    echo "Email: " . htmlspecialchars($email) . "<br>";
+    echo "Message: " . nl2br(htmlspecialchars($message)) . "<br>";
 }
-
 ?>
 
 </html>
