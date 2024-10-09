@@ -6,7 +6,7 @@
     <?php include './templates/AlbumExample.php' ?>
     <?php include './templates/footer.php' ?>
     <script src="./js/JsFile.js">
-</script>
+</script>                                                    
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 

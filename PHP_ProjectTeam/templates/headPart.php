@@ -6,5 +6,4 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>The Project Team</title>
-
 </head>
